@@ -11,9 +11,15 @@ import UIKit
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
+        let circleView = BlueCircle(frame: CGRect(x: view.center.x, y: view.center.y, width: 100, height: 100))
+        
+        let redSquareView = RedSquareWithBorders(frame: CGRect(x: view.center.x, y: view.center.y - 200, width: 100, height: 100))
+        
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.lightGrayColor()
-
+        self.view.backgroundColor = UIColor.whiteColor()
+        
+        view.addSubview(circleView)
+        view.addSubview(redSquareView)
     }
 
     override func didReceiveMemoryWarning() {
@@ -23,13 +29,13 @@ class ViewController: UIViewController {
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         if let touch = touches as? Set<UITouch> {
-            let circleCenter = touch.first!.locationInView(view)
-            let circleWidth = CGFloat(25 + (arc4random() % 50))
-            let circleHeight = circleWidth
+            let triangleCenter = touch.first!.locationInView(view)
+            let triangleWidth = CGFloat(25 + (arc4random() % 50))
+            let triangleHeight = triangleWidth
             
-            let circleView = DrawView(frame: CGRect(x: circleCenter.x, y: circleCenter.y, width: circleWidth, height: circleHeight))
+            let triangleView = GreenTriangle(frame: CGRect(x:triangleCenter.x, y: triangleCenter.y, width: triangleWidth, height: triangleHeight))
             
-            view.addSubview(circleView)
+            view.addSubview(triangleView)
             
         }
         
